@@ -36,7 +36,8 @@ public class Solution {
         dp[0] = true;
         for (int i = 1; i <= s.length(); i++) {
             for (int j = 0; j < i; j++) {
-                boolean c1 = wordDictSet.contains(s.substring(j, i));
+                String subWord = s.substring(j, i);
+                boolean c1 = wordDictSet.contains(subWord);
                 boolean c2 = dp[j];
                 if (c2 && c1) {
                     dp[i] = true;
@@ -44,6 +45,10 @@ public class Solution {
                 }
             }
         }
+        for (boolean b : dp) {
+            System.out.print(b+",");
+        }
+        System.out.println();
         return dp[s.length()];
     }
 
@@ -53,6 +58,7 @@ public class Solution {
         List<String> objects = new ArrayList<>();
         objects.add("leet");
         objects.add("code");
-        System.out.println(DwordBreak("leetcode", objects));
+
+        System.out.println(wordBreak("leetcode", objects));
     }
 }
